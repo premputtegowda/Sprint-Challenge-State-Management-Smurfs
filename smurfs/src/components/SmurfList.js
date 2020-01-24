@@ -2,12 +2,14 @@ import React from 'react';
 
 import { connect } from 'react-redux'
 
+import { fetchActivity } from '../actions';
 
 
-const SmurfList = () => {
+
+const SmurfList = (props) => {
     return (
         <div>
-            Hello I am smurf
+           <button onClick={props.fetchActivity}>Get Smurfs!</button>
         </div>
     )
 }
@@ -20,4 +22,4 @@ const mapPropsToState = (state) => {
     }
 }
 
-export default connect(mapPropsToState, {})(SmurfList);
+export default connect(mapPropsToState, { fetchActivity })(SmurfList);
