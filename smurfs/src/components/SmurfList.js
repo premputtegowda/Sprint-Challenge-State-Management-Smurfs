@@ -1,15 +1,25 @@
 import React from 'react';
+import SmurfForm from './SmurfForm'
 
 import { connect } from 'react-redux'
 
-import { fetchActivity } from '../actions';
+import { fetchSmurfs, pushSmurfs} from '../actions';
 
 
 
 const SmurfList = (props) => {
+    console.log(props.smurfs)
     return (
+        
         <div>
-           <button onClick={props.fetchActivity}>Get Smurfs!</button>
+            <SmurfForm pushSmurfs={props.pushSmurfs}/>
+           <button onClick={props.fetchSmurfs}>Get Smurfs!</button>
+           <div>
+              {
+                  
+
+              }
+           </div>
         </div>
     )
 }
@@ -22,4 +32,4 @@ const mapPropsToState = (state) => {
     }
 }
 
-export default connect(mapPropsToState, { fetchActivity })(SmurfList);
+export default connect(mapPropsToState, { fetchSmurfs, pushSmurfs })(SmurfList);
