@@ -1,5 +1,6 @@
 import React from 'react';
 import SmurfForm from './SmurfForm'
+import Smurf from './Smurf'
 
 import { connect } from 'react-redux'
 
@@ -14,12 +15,19 @@ const SmurfList = (props) => {
         <div>
             <SmurfForm pushSmurfs={props.pushSmurfs}/>
            <button onClick={props.fetchSmurfs}>Get Smurfs!</button>
-           <div>
-              {
-                  
+            {props.smurfs ? 
 
-              }
-           </div>
+            <div>
+            {
+            props.smurfs.map( smurf => (
+                <Smurf key={smurf.id} smurf={smurf} />
+            ))  
+
+            }
+            </div>
+            : null
+           
+            }
         </div>
     )
 }
