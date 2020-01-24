@@ -17,12 +17,16 @@ export const fetchSmurfs = () => dispatch => {
 }
 
 export const pushSmurfs = (values) => dispatch => {
+    console.log('values in push: ', values)
     dispatch({type:PUSHING_ACTIVITY_START  });
     axios.post('http://localhost:3333/smurfs',values)
     .then(res=> 
-        // dispatch({type: PUSHING_ACTIVITY_SUCCESS, payload: val})
-        console.log(res)
+        {
+            
+        dispatch({type: FETCHING_ACTIVITY_SUCCESS, payload: res.data})
+        }
         )
+       
     .catch(err => 
         // dispatch({type: PUSHING_ACTIVITY_FAILURE, payload: err})
         console.log(err)

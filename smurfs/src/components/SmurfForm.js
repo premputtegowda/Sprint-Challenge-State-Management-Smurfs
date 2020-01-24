@@ -5,7 +5,7 @@ const SmurfForm = (props) => {
     const [smurf, setSmurf] = useState({
                                     name: '',
                                     age:'',
-                                    height:'',
+                                    height:null,
                                     id:null
                                 })
 
@@ -16,7 +16,7 @@ const SmurfForm = (props) => {
     }
     console.log(smurf)
     return (
-        <div>
+        <div className="search-form">
             <input
                 name="name"
                 value= {smurf.name}
@@ -37,7 +37,7 @@ const SmurfForm = (props) => {
                 onChange={handleChange}
                 placeholder='Height'
             />
-            <button onClick={()=> props.pushSmurfs({...smurf,id:Date.now()})}>Add Smurf!</button>
+            <button disabled={!smurf.name || smurf.age || smurf.height} onClick={()=> props.pushSmurfs({...smurf,id:Date.now()})}>Add Smurf!</button>
         </div>
     )
 }
